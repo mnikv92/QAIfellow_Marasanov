@@ -1,8 +1,10 @@
-package ru.iFellow;
+package EdujiraiFellow;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 /**
  * Unit test for simple App.

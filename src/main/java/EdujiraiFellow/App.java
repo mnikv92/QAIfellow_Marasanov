@@ -1,4 +1,5 @@
-package ru.iFellow;
+package EdujiraiFellow;
+
 
 /**
  * Hello world!
