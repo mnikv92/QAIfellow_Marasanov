@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestSeleniumATHomeworkTest extends WebHooks {
     private final LoginPage loginPage = new LoginPage();
     private final DashboardPage dashboardPage = new DashboardPage();
-    private final ProjectTestPage projectTestPage = new ProjectTestPage();
     private final TaskPage taskPage = new TaskPage();
 
     private final String login = "AT16";

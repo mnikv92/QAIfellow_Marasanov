@@ -21,15 +21,13 @@ public class TaskPage {
         return fixInVersions.shouldBe(Condition.visible).getText();
     }
 
-    public TaskPage setInProgress() {
+    public void setInProgress() {
         inProgress.shouldBe(Condition.visible).click();
-        return this;
     }
 
-    public TaskPage setDone() {
+    public void setDone() {
         businessProcess.shouldBe(Condition.visible).click();
         done.shouldBe(Condition.visible).click();
-        return this;
     }
 
 }

@@ -15,9 +15,8 @@ public class DashboardPage {
             $x("//img[@class='quick-search-item-image']/following-sibling::span[@class='quick-search-item-title']");
 
 
-    public DashboardPage checkLogin() {
+    public void checkLogin() {
         userOptions.should(Condition.exist);
-        return this;
     }
 
     public void getIntoTest() {
@@ -25,10 +24,9 @@ public class DashboardPage {
         testButton.click();
     }
 
-    public DashboardPage quickSearch(String request) {
+    public void quickSearch(String request) {
         quickSearch.click();
         quickSearch.sendKeys(request);
         searchList.shouldBe(Condition.visible).click();
-        return this;
     }
 }

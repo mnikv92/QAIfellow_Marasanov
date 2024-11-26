@@ -35,11 +35,8 @@ public class ProjectTestPage {
     private final SelenideElement closeButton = $x("//button[@class = 'aui-close-button']");
 
 
-    private final SelenideElement textAreaSummary = $x("//textarea[@name='summary']");
-
-    public ProjectTestPage checkInTest() {
+    public void checkInTest() {
         sidebarBody.shouldBe(Condition.visible);
-        return this;
     }
 
     public Integer parseTasksNumber() {
@@ -54,19 +51,17 @@ public class ProjectTestPage {
         return numbers.get(numbers.size() - 1);
     }
 
-    public ProjectTestPage switchToAllTasks() {
+    public void switchToAllTasks() {
         switchFilter.click();
         allIssues.click();
-        return this;
     }
 
-    public ProjectTestPage switchToReportedByMe() {
+    public void switchToReportedByMe() {
         switchFilter.click();
         reportedByMe.click();
-        return this;
     }
 
-    public ProjectTestPage createNewTask(String taskType, String taskTitle, String taskDescription) {
+    public void createNewTask(String taskType, String taskTitle, String taskDescription) {
         newTaskButton.click();
         newTaskHeader.shouldBe(Condition.visible);
         issueTypeField.shouldBe(Condition.visible).click();
@@ -75,10 +70,9 @@ public class ProjectTestPage {
         descriptionField.shouldBe(Condition.visible).sendKeys(taskDescription);
         createButton.click();
         closeButton.shouldBe(Condition.visible).click();
-        return this;
     }
 
-    public ProjectTestPage createNewBug(String taskType, String taskTitle, String taskDescription, String env, String marks) {
+    public void createNewBug(String taskType, String taskTitle, String taskDescription, String env, String marks) {
         newTaskButton.click();
         newTaskHeader.shouldBe(Condition.visible);
         issueTypeField.shouldBe(Condition.visible).click();
@@ -95,7 +89,6 @@ public class ProjectTestPage {
         trivial.shouldBe(Condition.visible).click();
         createButton.click();
         closeButton.shouldBe(Condition.visible).click();
-        return this;
     }
 
 
