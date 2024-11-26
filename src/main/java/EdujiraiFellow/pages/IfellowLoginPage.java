@@ -15,6 +15,5 @@ public class IfellowLoginPage {
         loginInput.shouldBe(Condition.visible).sendKeys(login);
         passwordInput.shouldBe(Condition.visible).sendKeys(password);
         loginButton.click();
-
     }
 }

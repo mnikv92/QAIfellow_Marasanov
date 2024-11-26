@@ -18,9 +18,9 @@ public class WebHooks {
     public void initBrowser() {
         Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
         Configuration.browser = Browsers.CHROME;
-        getWebDriver().manage().window().maximize();
 
         Selenide.open("https://edujira.ifellow.ru/");
+        getWebDriver().manage().window().maximize();
 
         System.out.println(Configuration.pageLoadStrategy);
         System.out.println("!!!!!!!");
