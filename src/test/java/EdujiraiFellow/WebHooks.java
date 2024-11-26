@@ -18,6 +18,7 @@ public class WebHooks {
     public void initBrowser() {
         Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
         Configuration.browser = Browsers.CHROME;
+        Configuration.timeout = 15000;
 
         Selenide.open("https://edujira.ifellow.ru/");
         getWebDriver().manage().window().maximize();
