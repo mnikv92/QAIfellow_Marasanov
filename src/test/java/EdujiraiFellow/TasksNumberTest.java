@@ -15,6 +15,10 @@ public class TasksNumberTest extends WebHooks {
 
     private final String login = "AT16";
     private final String password = "Qwerty123";
+    private final String taskType = "Задача";
+    private final String taskTitle = "Задача для проверки, потом удалить";
+    private final String taskDescription = "Описание задачи";
+
 
     @Test
     public void tasksNumberCounter() {
@@ -25,7 +29,7 @@ public class TasksNumberTest extends WebHooks {
         projectTestPage.switchToAllTasks();
         Selenide.refresh();
         Integer oldTaskNumber = projectTestPage.parseTasksNumber();
-        projectTestPage.createNewTask();
+        projectTestPage.createNewTask(taskType, taskTitle, taskDescription);
         Selenide.refresh();
         Integer newTaskNumber = projectTestPage.parseTasksNumber();
         assertEquals(oldTaskNumber + 1, newTaskNumber);
