@@ -30,7 +30,24 @@ public class NewBugTest extends WebHooks {
         projectTestPage.createNewBug(taskType, taskTitle, taskDescription, marks, env);
         projectTestPage.switchToReportedByMe();
         taskPage.setInProgress();
+        taskPage.closeMessage();
         taskPage.setDone();
+        taskPage.closeMessage();
 
     }
+
+//    @Test
+//    public void newBugMaker2() {
+//        loginPage.loginIntoEdujira(login, password);
+//        dashboardPage.checkLogin();
+//        dashboardPage.getIntoTest();
+//        projectTestPage.checkInTest();
+//        projectTestPage.createNewBug(taskType, taskTitle, taskDescription, marks, env);
+//        projectTestPage.switchToReportedByMe();
+//        taskPage.setInProgress();
+//        taskPage.closeMessage();
+//        taskPage.setDone();
+//        taskPage.closeMessage();
+//    }
+
 }

@@ -57,8 +57,8 @@ public class ProjectTestPage {
     }
 
     public void switchToReportedByMe() {
-        switchFilter.click();
-        reportedByMe.click();
+        switchFilter.shouldBe(Condition.visible, Duration.ofSeconds(3)).click();
+        reportedByMe.shouldBe(Condition.visible, Duration.ofSeconds(3)).click();
     }
 
     public void createNewTask(String taskType, String taskTitle, String taskDescription) {
@@ -87,10 +87,9 @@ public class ProjectTestPage {
         versions.shouldBe(Condition.visible).click();
         importance.shouldBe(Condition.visible).click();
         trivial.shouldBe(Condition.visible).click();
-        createButton.click();
+        createButton.shouldBe(Condition.visible).click();
         closeButton.shouldBe(Condition.visible).click();
     }
-
 
 
 }
