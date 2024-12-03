@@ -4,7 +4,7 @@ import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
-public class LoginTest extends WebHooks {
+public class LoginTest {
 
     private final LoginPage loginPage = new LoginPage();
     private final DashboardPage dashboardPage = new DashboardPage();

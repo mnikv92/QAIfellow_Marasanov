@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TasksNumberTest extends WebHooks {
+public class TasksNumberTest {
     private final LoginPage loginPage = new LoginPage();
     private final DashboardPage dashboardPage = new DashboardPage();
     private final ProjectTestPage projectTestPage = new ProjectTestPage();

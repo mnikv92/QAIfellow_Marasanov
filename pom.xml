@@ -14,6 +14,8 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit-platform.version>1.9.3</junit-platform.version>
+    <cucumber-junit.version>7.14.0</cucumber-junit.version> <!-- Пример версии -->
 
     <compiler.version>17</compiler.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,11 +42,38 @@
   </properties>
 
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-bom</artifactId>
+        <version>7.18.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+<!--    <dependency>-->
+<!--      <groupId>ch.qos.logback</groupId>-->
+<!--      <artifactId>logback-classic</artifactId>-->
+<!--      <version>1.4.11</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--      <version>2.20.0</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit-platform-engine</artifactId>
+      <version>${cucumber-junit.version}</version>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -60,6 +89,12 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
+      <version>${junit-platform.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -93,6 +128,11 @@
       <artifactId>selenide</artifactId>
       <version>${selenide.version}</version>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.seleniumhq.selenium</groupId>-->
+<!--      <artifactId>selenium-devtools-v86</artifactId>-->
+<!--      <version>4.12.1</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.aeonbits.owner</groupId>
       <artifactId>owner</artifactId>
@@ -210,6 +250,7 @@
           </dependency>
         </dependencies>
       </plugin>
+
 
       <plugin>
         <groupId>io.qameta.allure</groupId>

@@ -7,7 +7,7 @@ import EdujiraiFellow.pages.TaskPage;
 import org.junit.jupiter.api.Test;
 
 
-public class NewBugTest extends WebHooks {
+public class NewBugTest {
     private final LoginPage loginPage = new LoginPage();
     private final DashboardPage dashboardPage = new DashboardPage();
     private final ProjectTestPage projectTestPage = new ProjectTestPage();
@@ -33,21 +33,5 @@ public class NewBugTest extends WebHooks {
         taskPage.closeMessage();
         taskPage.setDone();
         taskPage.closeMessage();
-
     }
-
-//    @Test
-//    public void newBugMaker2() {
-//        loginPage.loginIntoEdujira(login, password);
-//        dashboardPage.checkLogin();
-//        dashboardPage.getIntoTest();
-//        projectTestPage.checkInTest();
-//        projectTestPage.createNewBug(taskType, taskTitle, taskDescription, marks, env);
-//        projectTestPage.switchToReportedByMe();
-//        taskPage.setInProgress();
-//        taskPage.closeMessage();
-//        taskPage.setDone();
-//        taskPage.closeMessage();
-//    }
-
 }
