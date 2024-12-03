@@ -39,7 +39,6 @@ public class NewBugSteps {
     @Тогда("^создаем новый баг. Тип задачи: '(.*)', Заголовок: '(.*)', Описание: '(.*)', Метки: '(.*)', Окружение: '(.*)'")
     public void addNewBug(String taskType, String taskTitle, String taskDescription, String marks, String env) {
         projectTestPage.createNewBug(taskType, taskTitle, taskDescription, marks, env);
-        taskPage.closeMessage();
     }
 
     @Затем("^переключаем фильтр на 'Сообщенные мной'")
@@ -50,12 +49,10 @@ public class NewBugSteps {
     @И("^оказываемся на странице последней открытой нами задачи. Ставим статус задачи 'В работе'")
     public void setInWork() {
         taskPage.setInProgress();
-//        taskPage.closeMessage();
     }
     @И("^отмечаем задачу как выполненную")
     public void setFinished() {
         taskPage.setDone();
-//        taskPage.closeMessage();
     }
-    @Затем("^убеждаемся, что статус задачи 'ГОТОВО'")
+
 }
