@@ -49,6 +49,7 @@ public class NewBugSteps {
     @И("^оказываемся на странице последней открытой нами задачи. Ставим статус задачи 'В работе'")
     public void setInWork() {
         taskPage.setInProgress();
+        taskPage.closeMessage();
     }
     @И("^отмечаем задачу как выполненную")
     public void setFinished() {

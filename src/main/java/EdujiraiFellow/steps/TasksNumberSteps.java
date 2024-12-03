@@ -47,8 +47,7 @@ public class TasksNumberSteps {
 
     @И("^фиксируем количество задач в счетчике")
     public void parseOldTasksNumber() {
-        Integer oldTaskNumber = projectTestPage.parseTasksNumber();
-        oldNum = oldTaskNumber;
+        oldNum = projectTestPage.parseTasksNumber();
     }
 
     @Затем("^создаем новую задачу. Тип: '(.*)', тема: '(.*)', описание: '(.*)'")
@@ -61,8 +60,7 @@ public class TasksNumberSteps {
 
     @И("^фиксируем новое количество задач в счетчике")
     public void parseNewTasksNumber() {
-        Integer newTaskNumber = projectTestPage.parseTasksNumber();
-        newNum = newTaskNumber;
+        newNum = projectTestPage.parseTasksNumber();
     }
 
     @Затем("^сравниваем количество задач. Должно стать на 1 больше")
