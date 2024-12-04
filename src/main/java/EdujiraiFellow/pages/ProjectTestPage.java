@@ -60,7 +60,6 @@ public class ProjectTestPage {
     public void switchToReportedByMe() {
         switchFilter.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
         reportedByMe.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
-//        Selenide.refresh();
     }
 
     public void createNewTask(String taskType, String taskTitle, String taskDescription) {
