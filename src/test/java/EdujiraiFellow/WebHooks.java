@@ -19,6 +19,5 @@ public class WebHooks {
 
         Selenide.open("https://edujira.ifellow.ru/");
         getWebDriver().manage().window().maximize();
-
     }
 }

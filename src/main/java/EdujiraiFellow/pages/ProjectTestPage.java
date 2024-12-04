@@ -1,6 +1,7 @@
 package EdujiraiFellow.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
@@ -57,8 +58,8 @@ public class ProjectTestPage {
     }
 
     public void switchToReportedByMe() {
-        switchFilter.shouldBe(Condition.visible, Duration.ofSeconds(3)).click();
-        reportedByMe.shouldBe(Condition.visible, Duration.ofSeconds(3)).click();
+        switchFilter.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
+        reportedByMe.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
     }
 
     public void createNewTask(String taskType, String taskTitle, String taskDescription) {
@@ -70,6 +71,7 @@ public class ProjectTestPage {
         descriptionField.shouldBe(Condition.visible).sendKeys(taskDescription);
         createButton.click();
         closeButton.shouldBe(Condition.visible).click();
+        Selenide.refresh();
     }
 
     public void createNewBug(String taskType, String taskTitle, String taskDescription, String env, String marks) {

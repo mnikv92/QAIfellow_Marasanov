@@ -37,4 +37,3 @@ public class TaskPage {
         messageCloseButton.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
     }
 }
-
