@@ -90,6 +90,4 @@ public class ProjectTestPage {
         createButton.shouldBe(Condition.visible).click();
         closeButton.shouldBe(Condition.visible).click();
     }
-
-
 }

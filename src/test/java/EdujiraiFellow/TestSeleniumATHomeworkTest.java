@@ -2,7 +2,6 @@ package EdujiraiFellow;
 
 import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
-import EdujiraiFellow.pages.ProjectTestPage;
 import EdujiraiFellow.pages.TaskPage;
 import org.junit.jupiter.api.Test;
 

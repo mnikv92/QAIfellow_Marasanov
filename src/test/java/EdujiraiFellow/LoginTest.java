@@ -11,15 +11,10 @@ public class LoginTest extends WebHooks {
     private final String login = "AT16";
     private final String password = "Qwerty123";
 
+
     @Test
     public void loginTest() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();
     }
-
-
-
-
-
-
 }

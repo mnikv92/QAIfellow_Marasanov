@@ -36,6 +36,5 @@ public class TaskPage {
     public void closeMessage() {
         messageCloseButton.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
     }
-
 }
 

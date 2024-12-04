@@ -12,10 +12,20 @@ public class LoginPage {
     private final SelenideElement loginInput = $x("//input[@id='login-form-username']");
     private final SelenideElement passwordInput = $x("//input[@id='login-form-password']");
     private final SelenideElement loginButton = $x("//input[@value='Войти']");
+    private final SelenideElement loginError = $x("//div[@id='usernameerror']");
+    private final SelenideElement messageError = $x("//div[@class='aui-message aui-message-error']");
 
     public void loginIntoEdujira(String login, String password) {
         loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(login);
         passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(password);
         loginButton.click();
+        sleep(1000);
+
+        if (loginError.exists() | messageError.exists()) {
+            sleep(1000);
+            loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(login);
+            passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(password);
+            loginButton.click();
+        }
     }
 }
