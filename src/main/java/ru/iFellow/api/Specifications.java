@@ -16,4 +16,11 @@ public class Specifications {
                 .log(LogDetail.BODY)
                 .build();
     }
+
+    public static ResponseSpecification baseResponseSpecSuccess() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(201)
+                .log(LogDetail.ALL)
+                .build();
+    }
 }

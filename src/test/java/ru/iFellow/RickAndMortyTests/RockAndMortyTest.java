@@ -1,11 +1,15 @@
 package ru.iFellow.RickAndMortyTests;
 
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.iFellow.api.Specifications;
 import ru.iFellow.api.character.Character;
 import ru.iFellow.api.character.Location;
 import ru.iFellow.api.episode.Episode;
+import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.steps.RickAndMortySteps;
 
 
@@ -14,6 +18,11 @@ import java.util.*;
 import static ru.iFellow.steps.RickAndMortySteps.extractNumber;
 
 public class RockAndMortyTest {
+
+    @BeforeAll
+    public static void setUp() {
+        RestAssured.requestSpecification = Specifications.baseRequestSpec(EnvConstants.RICKANDMORTY_URL);
+    }
 
     private static final RickAndMortySteps rickAndMortySteps = new RickAndMortySteps();
     String charName = "Morty Smith";
@@ -35,7 +44,7 @@ public class RockAndMortyTest {
 
         String lastEpisode = "https://rickandmortyapi.com/api/episode/" + Collections.max(episodesIds);
         lastEpisodesId = Collections.max(episodesIds);
-        System.out.println("\nLast episode number is " + lastEpisode + "\n");
+        System.out.println("\nНомер последнего эпизода " + lastEpisode + "\n");
 
         Episode episode = rickAndMortySteps.getEpisodeById(lastEpisodesId);
         List<String> charactersList = episode.characters;
@@ -44,7 +53,7 @@ public class RockAndMortyTest {
             charactersIds.add(extractNumber(charactersList.get(i)));
         }
         lastCharactersId = charactersIds.get(charactersIds.size() - 1);
-        System.out.println("\nLast character's ID in last episode is " + lastCharactersId + "\n");
+        System.out.println("\nID последнего персонажа в последнем эпизоде " + lastCharactersId + "\n");
         Character lastCharacter = rickAndMortySteps.getCharById(lastCharactersId);
 
         for (Map<String, Character> mortyData : listOfMortys) {
