@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Data
-public class episode {
+public class Episode {
     public int id;
     public String name;
     public String air_date;
