@@ -18,7 +18,7 @@ public class ReqresTest {
     @BeforeAll
     public static void setUp() {
         RestAssured.requestSpecification = Specifications.baseRequestSpec(EnvConstants.REQRES_URL);
-        RestAssured.responseSpecification = Specifications.baseResponseSpecSuccess();
+        RestAssured.responseSpecification = Specifications.reqresBaseResponseSpecSuccess();
     }
 
     private static final ReqresSteps reqresSteps = new ReqresSteps();

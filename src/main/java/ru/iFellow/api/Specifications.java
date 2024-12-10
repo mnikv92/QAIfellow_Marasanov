@@ -17,7 +17,14 @@ public class Specifications {
                 .build();
     }
 
-    public static ResponseSpecification baseResponseSpecSuccess() {
+    public static ResponseSpecification rickAndMortyBaseResponseSpecSuccess() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .log(LogDetail.BODY)
+                .build();
+    }
+
+    public static ResponseSpecification reqresBaseResponseSpecSuccess() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(201)
                 .log(LogDetail.ALL)

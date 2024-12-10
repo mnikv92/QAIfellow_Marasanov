@@ -15,19 +15,4 @@ public class ReqresApi extends BaseReqresApi {
                 .post(USER_URN)
                 .then();
     }
-
-    public ValidatableResponse getUserId(int id) {
-        return given()
-                .when()
-                .get(USER_URN + "/" + id)
-                .then();
-    }
-
-    public ValidatableResponse updateUser(int id, User user) {
-        return given()
-                .body(user)
-                .when()
-                .put(USER_URN + "/" + id)
-                .then();
-    }
 }

@@ -17,11 +17,12 @@ import java.util.*;
 
 import static ru.iFellow.steps.RickAndMortySteps.extractNumber;
 
-public class RockAndMortyTest {
+public class RickAndMortyTest {
 
     @BeforeAll
     public static void setUp() {
         RestAssured.requestSpecification = Specifications.baseRequestSpec(EnvConstants.RICKANDMORTY_URL);
+        RestAssured.responseSpecification = Specifications.rickAndMortyBaseResponseSpecSuccess();
     }
 
     private static final RickAndMortySteps rickAndMortySteps = new RickAndMortySteps();
