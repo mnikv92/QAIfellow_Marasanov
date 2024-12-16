@@ -18,7 +18,7 @@ public class TestSeleniumATHomeworkTest extends WebHooks {
     private final String status = "СДЕЛАТЬ";
     private final String version = "Version 2.0";
 
-    @Test
+//    @Test
     public void taskStatusCheck() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();

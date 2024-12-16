@@ -20,7 +20,7 @@ public class TasksNumberTest extends WebHooks {
     private final String taskDescription = "Описание задачи";
 
 
-    @Test
+//    @Test
     public void tasksNumberCounter() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();

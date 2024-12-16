@@ -9,7 +9,7 @@ public class Config {
     private static final Properties properties = new Properties();
 
     static {
-        try(FileInputStream input = new FileInputStream("src/test/resources/config.properties")) {
+        try (FileInputStream input = new FileInputStream("src/test/resources/config.properties")) {
             properties.load(input);
 
         } catch (IOException e) {
