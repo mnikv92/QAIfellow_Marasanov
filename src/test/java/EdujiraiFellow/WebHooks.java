@@ -13,11 +13,11 @@ public class WebHooks {
 
     @BeforeEach
     public void initBrowser() {
-        Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
-        Configuration.browser = Browsers.CHROME;
-        Configuration.timeout = 15000;
+        Configuration.pageLoadStrategy = Config.get("pageLoadStrategy");
+        Configuration.browser = Config.get("browser");
+        Configuration.timeout = Long.parseLong(Config.get("timeout"));
 
-        Selenide.open("https://edujira.ifellow.ru/");
+        Selenide.open(Config.get("app.url"));
         getWebDriver().manage().window().maximize();
     }
 }

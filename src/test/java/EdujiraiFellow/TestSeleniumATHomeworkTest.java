@@ -12,8 +12,8 @@ public class TestSeleniumATHomeworkTest extends WebHooks {
     private final DashboardPage dashboardPage = new DashboardPage();
     private final TaskPage taskPage = new TaskPage();
 
-    private final String login = "AT16";
-    private final String password = "Qwerty123";
+    private final String login = Config.get("login");
+    private final String password = Config.get("password");
     private final String request = "TestSeleniumATHomework";
     private final String status = "СДЕЛАТЬ";
     private final String version = "Version 2.0";

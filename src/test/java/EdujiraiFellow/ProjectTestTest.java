@@ -10,8 +10,8 @@ public class ProjectTestTest extends WebHooks {
     private final DashboardPage dashboardPage = new DashboardPage();
     private final ProjectTestPage projectTestPage = new ProjectTestPage();
 
-    private final String login = "AT16";
-    private final String password = "Qwerty123";
+    private final String login = Config.get("login");
+    private final String password = Config.get("password");
 
     @Test
     public void getToTest() {
