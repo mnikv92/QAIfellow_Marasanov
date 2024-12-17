@@ -2,6 +2,7 @@ package EdujiraiFellow;
 
 import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LoginTest extends WebHooks {
@@ -13,6 +14,7 @@ public class LoginTest extends WebHooks {
 
 
     @Test
+    @DisplayName("Тестирование авторизации")
     public void loginTest() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();

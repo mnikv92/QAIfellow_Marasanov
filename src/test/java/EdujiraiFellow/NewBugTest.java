@@ -4,7 +4,10 @@ import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
 import EdujiraiFellow.pages.ProjectTestPage;
 import EdujiraiFellow.pages.TaskPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class NewBugTest extends WebHooks {
@@ -20,8 +23,10 @@ public class NewBugTest extends WebHooks {
     private final String taskDescription = "Описание ошибки";
     private final String marks = "QA_school";
     private final String env = "Test";
+    private final String status = "ГОТОВО";
 
     @Test
+    @DisplayName("Тестирование создания нового бага")
     public void newBugMaker() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();
@@ -33,5 +38,6 @@ public class NewBugTest extends WebHooks {
         taskPage.closeMessage();
         taskPage.setDone();
         taskPage.closeMessage();
+        assertEquals(status, taskPage.parseStatus());
     }
 }

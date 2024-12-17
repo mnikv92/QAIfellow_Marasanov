@@ -4,6 +4,7 @@ import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
 import EdujiraiFellow.pages.ProjectTestPage;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +21,8 @@ public class TasksNumberTest extends WebHooks {
     private final String taskDescription = "Описание задачи";
 
 
-//    @Test
+    @Test
+    @DisplayName("Тестирование счетчика задач")
     public void tasksNumberCounter() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();

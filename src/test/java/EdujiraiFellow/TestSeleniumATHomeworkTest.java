@@ -3,6 +3,7 @@ package EdujiraiFellow;
 import EdujiraiFellow.pages.DashboardPage;
 import EdujiraiFellow.pages.LoginPage;
 import EdujiraiFellow.pages.TaskPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,8 @@ public class TestSeleniumATHomeworkTest extends WebHooks {
     private final String status = "СДЕЛАТЬ";
     private final String version = "Version 2.0";
 
-//    @Test
+    @Test
+    @DisplayName("Проверка статуса и номера версии в задачи 'TestSeleniumATHomework'")
     public void taskStatusCheck() {
         loginPage.loginIntoEdujira(login, password);
         dashboardPage.checkLogin();
