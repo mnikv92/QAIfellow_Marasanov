@@ -13,13 +13,11 @@ public class LoginPage {
     private final SelenideElement loginInput = $x("//input[@id='login-form-username']").as("Поле логина");
     private final SelenideElement passwordInput = $x("//input[@id='login-form-password']").as("Поле пароля");
     private final SelenideElement loginButton = $x("//input[@value='Войти']").as("Кнопка 'Вход'");
-    private final SelenideElement loginError = $x("//div[@id='usernameerror']").as("Сообщение о неверном логине или пароле");
-    private final SelenideElement messageError = $x("//div[@class='aui-message aui-message-error']").as("Сообщение о неверном логине или пароле");
 
     @Step("Авторизация в системе Edujira: логин - '{login}', пароль - '{password}'")
     public void loginIntoEdujira(String login, String password) {
         loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).setValue(login);
-        passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(password);
+        passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).setValue(password);
         loginButton.click();
     }
 }

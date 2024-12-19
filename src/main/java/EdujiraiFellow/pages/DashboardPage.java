@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class DashboardPage {
@@ -29,6 +31,6 @@ public class DashboardPage {
     public void quickSearch(String request) {
         quickSearch.click();
         quickSearch.sendKeys(request);
-        searchList.shouldBe(Condition.visible).click();
+        searchList.shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
     }
 }
