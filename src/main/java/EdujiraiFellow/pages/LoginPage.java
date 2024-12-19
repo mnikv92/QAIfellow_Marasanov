@@ -18,17 +18,8 @@ public class LoginPage {
 
     @Step("Авторизация в системе Edujira: логин - '{login}', пароль - '{password}'")
     public void loginIntoEdujira(String login, String password) {
-
-        loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(login);
+        loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).setValue(login);
         passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(password);
         loginButton.click();
-        sleep(1000);
-
-        if (loginError.exists() | messageError.exists()) {
-            sleep(1000);
-            loginInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(login);
-            passwordInput.shouldBe(Condition.visible, Duration.ofSeconds(5)).sendKeys(password);
-            loginButton.click();
-        }
     }
 }
