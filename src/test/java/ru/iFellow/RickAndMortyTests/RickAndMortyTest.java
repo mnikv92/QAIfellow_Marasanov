@@ -43,9 +43,11 @@ public class RickAndMortyTest {
             }
         }
 
-        String lastEpisode = "https://rickandmortyapi.com/api/episode/" + Collections.max(episodesIds);
+//        String lastEpisode = "https://rickandmortyapi.com/api/episode/" + Collections.max(episodesIds);
         lastEpisodesId = Collections.max(episodesIds);
-        System.out.println("\nНомер последнего эпизода " + lastEpisode + "\n");
+//
+//        System.out.println("\nНомер последнего эпизода " + lastEpisode + "\n");
+//
 
         Episode episode = rickAndMortySteps.getEpisodeById(lastEpisodesId);
         List<String> charactersList = episode.characters;
@@ -54,7 +56,10 @@ public class RickAndMortyTest {
             charactersIds.add(extractNumber(charactersList.get(i)));
         }
         lastCharactersId = charactersIds.get(charactersIds.size() - 1);
-        System.out.println("\nID последнего персонажа в последнем эпизоде " + lastCharactersId + "\n");
+//
+//        System.out.println("\nID последнего персонажа в последнем эпизоде " + lastCharactersId + "\n");
+//
+
         Character lastCharacter = rickAndMortySteps.getCharById(lastCharactersId);
 
         for (Map<String, Character> mortyData : listOfMortys) {

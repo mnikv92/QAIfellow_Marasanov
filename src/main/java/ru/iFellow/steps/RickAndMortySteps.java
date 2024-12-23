@@ -5,17 +5,20 @@ import org.apache.http.HttpStatus;
 import ru.iFellow.api.episode.Episode;
 import ru.iFellow.api.rickandmorty.RickAndMortyApi;
 import ru.iFellow.api.character.Character;
+import ru.iFellow.constants.EnvConstants;
 
 
 public class RickAndMortySteps {
 
     public JsonPath getListCharByName(String name) {
-        JsonPath jsonPath = RickAndMortyApi.getCharByName(name)
+
+        String endpoint = "/character/?name=" + name;
+
+        return RickAndMortyApi.getRequest(EnvConstants.RICKANDMORTY_URL, endpoint)
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .body()
                 .jsonPath();
-        return jsonPath;
     }
 
     public static int extractNumber(String text) {
@@ -23,20 +26,24 @@ public class RickAndMortySteps {
     }
 
     public Episode getEpisodeById(int episodeId) {
-        Episode episode = RickAndMortyApi.getEpisodeById(episodeId)
+
+        String endpoint = "/episode/" + episodeId;
+
+        return RickAndMortyApi.getRequest(EnvConstants.RICKANDMORTY_URL, endpoint)
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .body()
                 .as(Episode.class);
-        return episode;
     }
 
     public Character getCharById(int charId) {
-        Character character = RickAndMortyApi.getCharById(charId)
+
+        String endpoint = "/character/" + charId;
+
+        return RickAndMortyApi.getRequest(EnvConstants.RICKANDMORTY_URL, endpoint)
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .body()
                 .as(Character.class);
-        return character;
     }
 }

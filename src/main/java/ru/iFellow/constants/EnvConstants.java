@@ -1,8 +1,10 @@
 package ru.iFellow.constants;
 
+import ru.iFellow.utils.Config;
+
 public class EnvConstants {
 
-    public static final String RICKANDMORTY_URL = "https://rickandmortyapi.com/api";
-    public static final String REQRES_URL = "https://reqres.in/api";
+    public static final String RICKANDMORTY_URL = Config.get("rickAndMorty.url");
+    public static final String REQRES_URL = Config.get("https://reqres.in/api");
 
 }
