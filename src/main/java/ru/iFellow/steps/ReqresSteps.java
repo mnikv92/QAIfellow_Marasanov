@@ -4,7 +4,6 @@ import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
@@ -38,10 +37,5 @@ public class ReqresSteps {
     @Тогда("^создаем нового пользователя$")
     public ValidatableResponse createNewUser() {
         return reqresApi.createUser(currentUser, EnvConstants.USER_URN, HttpStatus.SC_CREATED);
-    }
-
-    @Attachment(value = "{name}", type = "application/json")
-    public static String attachJson(String name, String JsonContent) {
-        return JsonContent;
     }
 }
