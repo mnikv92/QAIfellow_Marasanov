@@ -1,5 +1,7 @@
 package ru.iFellow.Reqres;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeAll;
@@ -27,6 +29,7 @@ public class ReqresTest {
 
     @Test
     @DisplayName("Создание пользователя")
+    @Step("Создание пользователя с новым именем и профессией")
     public void checkUserId() {
         User newUser = reqresSteps.readUserFromFile(filePath);
         User modifiedUser = reqresSteps.modifyUser(newUser, newName, newJob);
@@ -35,5 +38,12 @@ public class ReqresTest {
 
         response.body("name", equalTo(newName));
         response.body("job", equalTo(newJob));
+
+        attachResponse("Response Body", response.extract().asPrettyString());
+    }
+
+    @Attachment(value = "{name}", type = "application/json")
+    public static String attachResponse(String name, String responseBody) {
+        return responseBody;
     }
 }

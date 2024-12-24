@@ -1,5 +1,6 @@
 package ru.iFellow.api.rickandmorty;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.ValidatableResponse;
 
 
@@ -9,6 +10,7 @@ public class RickAndMortyApi extends BaseRickAndMortyApi {
 
     public static ValidatableResponse getRequest(String url, String endpoint) {
         return given()
+                .filter(new AllureRestAssured())
                 .when()
                 .get(url + endpoint)
                 .then();
