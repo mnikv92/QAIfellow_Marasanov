@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.api.Specifications;
-import ru.iFellow.api.character.Character;
+import ru.iFellow.model.Character;
 import ru.iFellow.api.episode.Episode;
 import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.steps.RickAndMortySteps;
@@ -25,25 +25,16 @@ public class RickAndMortyTest {
 
     private static final RickAndMortySteps rickAndMortySteps = new RickAndMortySteps();
     String charName = "Morty Smith";
-    int lastEpisodesId;
-    int lastCharactersId;
+
 
     @Test
     @DisplayName("Запрос персонажей по имени 'Morty Smith'")
-    public void checkListCharName() {
-
-
+    public void getListCharName() {
         List<Map<String, List<String>>> listOfMortys = rickAndMortySteps.getListCharByName(charName).getList("results");
-
         int lastEpisodesId = rickAndMortySteps.getLastEpisodeIdFromChars(listOfMortys);
-
         Episode episode = rickAndMortySteps.getDataById("episode", lastEpisodesId, Episode.class, HttpStatus.SC_OK);
-
         int lastCharactersId = rickAndMortySteps.getLastCharFromEpisode(episode);
-
         Character lastCharacter = rickAndMortySteps.getDataById("character", lastCharactersId, Character.class, HttpStatus.SC_OK);
-
         rickAndMortySteps.compareCharacters(listOfMortys, lastCharacter);
-
     }
 }

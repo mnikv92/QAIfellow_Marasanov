@@ -2,7 +2,6 @@ package ru.iFellow.Reqres;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +32,6 @@ public class ReqresTest {
         User modifiedUser = reqresSteps.modifyUser(newUser, newName, newJob);
 
         ValidatableResponse response = reqresSteps.createNewUser(modifiedUser);
-        response.statusCode(HttpStatus.SC_CREATED);
 
         response.body("name", equalTo(newName));
         response.body("job", equalTo(newJob));

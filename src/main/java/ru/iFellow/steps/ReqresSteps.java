@@ -1,8 +1,10 @@
 package ru.iFellow.steps;
 
 import io.restassured.response.ValidatableResponse;
+import org.apache.http.HttpStatus;
 import ru.iFellow.api.reqres.ReqresApi;
 import ru.iFellow.api.user.User;
+import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.utils.MapperUtils;
 
 public class ReqresSteps {
@@ -20,7 +22,7 @@ public class ReqresSteps {
     }
 
     public ValidatableResponse createNewUser(User user) {
-        return reqresApi.createUser(user);
+        return reqresApi.createUser(user, EnvConstants.USER_URN, HttpStatus.SC_CREATED);
     }
-}
 
+}

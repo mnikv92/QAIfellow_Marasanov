@@ -3,7 +3,7 @@ package ru.iFellow.steps;
 import io.restassured.path.json.JsonPath;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
-import ru.iFellow.api.character.Character;
+import ru.iFellow.model.Character;
 import ru.iFellow.api.episode.Episode;
 import ru.iFellow.api.rickandmorty.RickAndMortyApi;
 import ru.iFellow.constants.EnvConstants;
@@ -37,15 +37,6 @@ public class RickAndMortySteps {
         return Collections.max(episodeIds);
     }
 
-    public void compareCharacters(List<Map<String, List<String>>> characters, Character lastCharacter) {
-        for (Map<String, List<String>> charData : characters) {
-
-            Assertions.assertEquals(lastCharacter.getSpecies(), charData.get("species"));
-            Assertions.assertNotEquals(lastCharacter.getLocation(), charData.get("location"));
-
-        }
-    }
-
     public int getLastCharFromEpisode(Episode episode) {
         List<String> characterUrls = episode.characters;
         List<Integer> characterIds = new ArrayList<>();
@@ -66,5 +57,14 @@ public class RickAndMortySteps {
 
     public static int extractNumber(String text) {
         return Integer.parseInt(text.substring(text.lastIndexOf("/") + 1));
+    }
+
+    public void compareCharacters(List<Map<String, List<String>>> characters, Character lastCharacter) {
+        for (Map<String, List<String>> charData : characters) {
+
+            Assertions.assertEquals(lastCharacter.getSpecies(), charData.get("species"));
+            Assertions.assertNotEquals(lastCharacter.getLocation(), charData.get("location"));
+
+        }
     }
 }

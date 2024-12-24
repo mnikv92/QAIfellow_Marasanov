@@ -7,12 +7,13 @@ import static io.restassured.RestAssured.given;
 
 public class ReqresApi extends BaseReqresApi {
 
-    private static final String USER_URN = "/users";
 
-    public ValidatableResponse createUser(User user) {
+    public ValidatableResponse createUser(User user, String endpoint, int statusCode) {
         return given()
-                .when().body(user)
-                .post(USER_URN)
-                .then();
+                .body(user)
+                .when()
+                .post(endpoint)
+                .then()
+                .statusCode(statusCode);
     }
 }

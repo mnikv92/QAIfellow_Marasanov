@@ -1,4 +1,4 @@
-package ru.iFellow.api.character;
+package ru.iFellow.model;
 
 import lombok.Data;
 
