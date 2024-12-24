@@ -21,7 +21,7 @@ public class RickAndMortyTest {
     String charName = "Morty Smith"; // Имя персонажа
 
     @Test
-    @DisplayName("Тест 'Rick and Morty'")
+    @DisplayName("Тест 'Rick and Morty' JUnit")
     public void getListCharName() {
         rickAndMortySteps.getListCharByName(charName);
         rickAndMortySteps.getLastEpisodeIdFromChars();

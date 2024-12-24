@@ -22,7 +22,7 @@ public class RickAndMortySteps {
     private Character lastCharacter;
 
     @Step("Получение списка персонажей с именем '{name}'")
-    @Дано("^получаем список персонажей с именем '(.*)'$")
+    @Дано("^список персонажей с именем '(.*)'$")
 
     public List<Map<String, List<String>>> getListCharByName(String name) {
 

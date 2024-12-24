@@ -14,6 +14,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <aspectj.version>1.9.22.1</aspectj.version>
         <cucumber.version>7.20.1</cucumber.version>
     </properties>
@@ -26,12 +27,6 @@
             <type>pom</type>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.cucumber</groupId>-->
-<!--            <artifactId>cucumber-spring</artifactId>-->
-<!--            <version>7.20.1</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-bom</artifactId>
@@ -54,25 +49,15 @@
             <artifactId>jsch</artifactId>
             <version>0.1.55</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-api</artifactId>-->
-<!--            <version>2.0.13</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-simple</artifactId>-->
-<!--            <version>2.0.13</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
-            <version>2.20.1</version>
+            <version>2.29.0</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
-            <version>2.20.1</version>
+            <version>2.29.0</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -83,24 +68,17 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.29.0</version>
-<!--            <scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
-            <version>2.28.1</version>
-<!--            <scope>test</scope>-->
+            <version>2.29.0</version>
         </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>7.5.1</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.aeonbits.owner</groupId>-->
-<!--            <artifactId>owner</artifactId>-->
-<!--            <version>${owner.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -151,7 +129,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.5</version>
+            <version>2.18.1</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -176,17 +154,6 @@
             <version>15.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.json</groupId>-->
-<!--            <artifactId>json</artifactId>-->
-<!--            <version>${json.version}</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -195,6 +162,7 @@
                 <directory>src/test/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
+                    <include>**/*.feature</include>
                 </includes>
             </resource>
         </resources>
@@ -202,7 +170,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
+                <version>2.15.2</version>
                 <configuration>
                     <reportVersion>2.30.0</reportVersion>
                 </configuration>
@@ -212,19 +180,21 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <properties>
-                        <includes>
-                            <include>**/*RunnerTest.class</include>
-                        </includes>
+                    <systemPropertyVariables>
+                        <property>
+                            <name>cucumber.execution.parallel.enabled</name>
+                            <value>false</value>
+                        </property>
                         <property>
                             <name>listener</name>
                             <value>io.qameta.allure.junit5.AllureJunit5</value>
                         </property>
-                    </properties>
+                        <includes>
+                            <include>**/*RunnerTest.class</include>
+                        </includes>
+                    </systemPropertyVariables>
                     <parallel>methods</parallel>
-<!--                    <threadCount>${parallelCount}</threadCount>-->
                     <perCoreThreadCount>true</perCoreThreadCount>
-                    <perCoreThreadCount>${parallelCount}</perCoreThreadCount>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         <!--                        нужно указать кодировку иначе в терминале не будет кирилицы у фич кукумбера-->
@@ -234,17 +204,22 @@
                     <failIfNoTests>true</failIfNoTests>
                     <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
-                        <allure.results.directory>
-                            ${project.build.directory}/allure-results
-                        </allure.results.directory>
+<!--                        <allure.results.directory>-->
+<!--                            ${project.build.directory}/allure-results-->
+<!--                        </allure.results.directory>-->
                     </systemPropertyVariables>
                     <systemProperties>
                         <property>
                             <name>junit.jupiter.extensions.autodetection.enabled</name>
                             <value>true</value>
                         </property>
+                        <property>
+                            <name>cucumber.execution.parallel.enabled</name>
+                            <value>false</value>
+                        </property>
                     </systemProperties>
                 </configuration>
+
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
