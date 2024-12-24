@@ -72,7 +72,7 @@ public class RickAndMortySteps {
 
     @Step("Получение данных по ID")
     @Затем("^получаем данные по ID персонажа$")
-    public <T> void getCharacterById() {
+    public void getCharacterById() {
         lastCharacter = RickAndMortyApi.getRequest(EnvConstants.RICKANDMORTY_URL, "/character/" + lastCharacterId)
                 .statusCode(HttpStatus.SC_OK)
                 .extract()

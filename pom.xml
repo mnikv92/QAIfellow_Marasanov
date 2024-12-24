@@ -181,6 +181,9 @@
                 <version>3.2.5</version>
                 <configuration>
                     <systemPropertyVariables>
+                        <allure.results.directory>
+                            ${project.build.directory}/allure-results
+                        </allure.results.directory>
                         <property>
                             <name>cucumber.execution.parallel.enabled</name>
                             <value>false</value>
@@ -203,11 +206,7 @@
                     </argLine>
                     <failIfNoTests>true</failIfNoTests>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <systemPropertyVariables>
-<!--                        <allure.results.directory>-->
-<!--                            ${project.build.directory}/allure-results-->
-<!--                        </allure.results.directory>-->
-                    </systemPropertyVariables>
+
                     <systemProperties>
                         <property>
                             <name>junit.jupiter.extensions.autodetection.enabled</name>

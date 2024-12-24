@@ -4,6 +4,6 @@
 
 ```mvn clean test -X```
 
-```mvn allure:serve```
-
 ```mvn allure:report```
+
+```mvn allure:serve```

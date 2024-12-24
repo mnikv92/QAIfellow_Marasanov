@@ -2,24 +2,14 @@ package ru.iFellow.Reqres;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.iFellow.api.Specifications;
-import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.steps.ReqresSteps;
 
 import static org.hamcrest.Matchers.equalTo;
 
 public class ReqresTest {
-
-    @BeforeAll
-    public static void setUp() {
-        RestAssured.requestSpecification = Specifications.baseRequestSpec(EnvConstants.REQRES_URL);
-        RestAssured.responseSpecification = Specifications.reqresBaseResponseSpecSuccess();
-    }
 
     private static final ReqresSteps reqresSteps = new ReqresSteps();
     private static final String filePath = "src/test/resources/user.json";
