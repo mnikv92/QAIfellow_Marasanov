@@ -13,6 +13,7 @@ import ru.iFellow.api.user.User;
 import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.utils.MapperUtils;
 
+
 public class ReqresSteps {
 
     private static final ReqresApi reqresApi = new ReqresApi();
@@ -20,25 +21,23 @@ public class ReqresSteps {
     private User currentUser;
 
     @Step("Чтение пользователя из файла: '{filePath}'")
-    @Дано("^чтение пользователя из файла '(.*)'")
-    public User readUserFromFile(String filePath) {
-        User user = MapperUtils.readFromFile(filePath, User.class);
-        Allure.addAttachment("User JSON", user.toString());
-        return user;
+    @Дано("^чтение пользователя из файла '(.*)'$")
+    public void readUserFromFile(String filePath) {
+        this.currentUser = MapperUtils.readFromFile(filePath, User.class);
+        Allure.addAttachment("User JSON", currentUser.toString());
     }
 
     @Step("Изменение имени на '{newName}' и профессии на '{newJob}'")
-    @Когда("^изменяем имя пользователя и профессию на '(.*)' и '(.*)'$")
-    public User modifyUser(User user, String newName, String newJob) {
-        user.setName(newName);
-        user.setJob(newJob);
-        return user;
+    @Когда("^изменяем имя пользователя на '(.*)' и профессию на '(.*)'$")
+    public void modifyUser(String newName, String newJob) {
+        currentUser.setName(newName);
+        currentUser.setJob(newJob);
     }
 
     @Step("Создание нового пользователя")
-    @Тогда("^создаем нового пользователя")
-    public ValidatableResponse createNewUser(User user) {
-        return reqresApi.createUser(user, EnvConstants.USER_URN, HttpStatus.SC_CREATED);
+    @Тогда("^создаем нового пользователя$")
+    public ValidatableResponse createNewUser() {
+        return reqresApi.createUser(currentUser, EnvConstants.USER_URN, HttpStatus.SC_CREATED);
     }
 
     @Attachment(value = "{name}", type = "application/json")

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.api.Specifications;
-import ru.iFellow.api.user.User;
 import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.steps.ReqresSteps;
 
@@ -31,10 +30,11 @@ public class ReqresTest {
     @DisplayName("Создание пользователя")
     @Step("Создание пользователя с новым именем и профессией")
     public void checkUserId() {
-        User newUser = reqresSteps.readUserFromFile(filePath);
-        User modifiedUser = reqresSteps.modifyUser(newUser, newName, newJob);
 
-        ValidatableResponse response = reqresSteps.createNewUser(modifiedUser);
+        reqresSteps.readUserFromFile(filePath);
+        reqresSteps.modifyUser(newName, newJob);
+
+        ValidatableResponse response = reqresSteps.createNewUser();
 
         response.body("name", equalTo(newName));
         response.body("job", equalTo(newJob));

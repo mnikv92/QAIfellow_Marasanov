@@ -1,18 +1,12 @@
 package ru.iFellow.RickAndMortyTests;
 
 import io.restassured.RestAssured;
-import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.api.Specifications;
-import ru.iFellow.model.Character;
-import ru.iFellow.api.episode.Episode;
 import ru.iFellow.constants.EnvConstants;
 import ru.iFellow.steps.RickAndMortySteps;
-
-
-import java.util.*;
 
 
 public class RickAndMortyTest {
@@ -24,17 +18,15 @@ public class RickAndMortyTest {
     }
 
     private static final RickAndMortySteps rickAndMortySteps = new RickAndMortySteps();
-    String charName = "Morty Smith";
-
+    String charName = "Morty Smith"; // Имя персонажа
 
     @Test
-    @DisplayName("Запрос персонажей по имени 'Morty Smith'")
+    @DisplayName("Тест 'Rick and Morty'")
     public void getListCharName() {
-        List<Map<String, List<String>>> listOfMortys = rickAndMortySteps.getListCharByName(charName).getList("results");
-        int lastEpisodesId = rickAndMortySteps.getLastEpisodeIdFromChars(listOfMortys);
-        Episode episode = rickAndMortySteps.getDataById("episode", lastEpisodesId, Episode.class, HttpStatus.SC_OK);
-        int lastCharactersId = rickAndMortySteps.getLastCharFromEpisode(episode);
-        Character lastCharacter = rickAndMortySteps.getDataById("character", lastCharactersId, Character.class, HttpStatus.SC_OK);
-        rickAndMortySteps.compareCharacters(listOfMortys, lastCharacter);
+        rickAndMortySteps.getListCharByName(charName);
+        rickAndMortySteps.getLastEpisodeIdFromChars();
+        rickAndMortySteps.getLastCharFromEpisode();
+        rickAndMortySteps.getCharacterById();
+        rickAndMortySteps.compareCharacters();
     }
 }
