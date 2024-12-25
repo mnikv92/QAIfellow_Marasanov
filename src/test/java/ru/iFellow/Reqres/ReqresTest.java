@@ -2,6 +2,9 @@ package ru.iFellow.Reqres;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +21,9 @@ public class ReqresTest {
 
     @Test
     @DisplayName("Создание пользователя")
-    @Step("Создание пользователя с новым именем и профессией")
     public void checkUserId() {
+
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
 
         reqresSteps.readUserFromFile(filePath);
         reqresSteps.modifyUser(newName, newJob);
